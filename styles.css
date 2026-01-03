@@ -285,13 +285,20 @@
             background: var(--white);
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
+            padding: 10px 26px;
+            border-radius: 50px;
             font-family: inherit;
-            font-weight: 700;
+            font-weight: 800;
+            transition: all 0.18s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(6,132,94,0.04);
         }
 
         .btn-secondary:hover {
-            background: var(--primary-color);
-            color: var(--white);
+            background: rgba(6,132,94,0.06);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(6,132,94,0.08);
         }
 
         .menu-toggle {
@@ -1564,7 +1571,47 @@
         /* Modal */
         .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(6,12,8,0.6); z-index: 9999; padding: 20px; }
         .modal[aria-hidden="false"] { display: flex; }
-        .modal-inner { background: var(--white); border-radius: 14px; padding: 28px 28px 24px; max-width: 780px; width: 100%; box-shadow: 0 40px 100px rgba(6,12,8,0.18); position: relative; max-height: 92vh; overflow: auto; -webkit-overflow-scrolling: touch; }
+        .modal-inner { background: var(--white); border-radius: 14px; padding: 28px 28px 24px; max-width: 880px; width: 100%; box-shadow: 0 40px 100px rgba(6,12,8,0.18); position: relative; max-height: 92vh; overflow: auto; -webkit-overflow-scrolling: touch; }
+        /* Booking form styles (refined for clarity and mobile) */
+        .booking-modal #bookingTitle { text-align: center; font-weight: 900; font-size: clamp(1.05rem, 2.2vw, 1.45rem); margin-bottom: 6px; color: var(--secondary-color); }
+        .booking-form { margin-top: 8px; }
+        .booking-form .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 18px; align-items: start; }
+        .booking-form .form-row { display: flex; flex-direction: column; }
+        .booking-form .form-row .form-label { margin-bottom: 8px; font-weight: 800; font-size: 14px; color: var(--text-dark); }
+        .booking-form .form-row input, .booking-form .form-row select, .booking-form .form-row textarea { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(16,148,65,0.10); font-size: 15px; width: 100%; box-sizing: border-box; background: #fff; transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.12s ease; }
+        .booking-form .form-row input::placeholder, .booking-form .form-row textarea::placeholder { color: #9aa3a1; }
+        .booking-form .form-row select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--text-light) 50%), linear-gradient(135deg, var(--text-light) 50%, transparent 50%); background-position: calc(100% - 14px) calc(1em + 2px), calc(100% - 9px) calc(1em + 2px); background-size: 8px 8px, 8px 8px; background-repeat: no-repeat; padding-right: 34px; }
+        .booking-form .form-row textarea { min-height: 96px; resize: vertical; }
+        .booking-form .form-row input:focus, .booking-form .form-row select:focus, .booking-form .form-row textarea:focus { outline: none; box-shadow: 0 14px 40px rgba(6,132,94,0.08); border-color: var(--primary-color); transform: translateY(-1px); }
+        .booking-form .form-row.form-full { grid-column: 1 / -1; }
+        .booking-form .hint { font-size: 13px; color: var(--text-light); margin-top: 6px; }
+        .form-actions { display: flex; gap: 12px; align-items: center; margin-top: 18px; justify-content: flex-end; }
+        .form-actions .form-status { margin-left: 10px; color: var(--primary-color); font-weight: 700; }
+        /* Buttons */
+        .form-actions .btn-primary { min-width: 140px; padding: 10px 18px; background: linear-gradient(90deg, var(--primary-color), var(--primary-light)); color: var(--white); border: none; border-radius: 8px; font-weight: 800; box-shadow: 0 8px 32px rgba(6,132,94,0.12); transition: transform 0.12s ease, box-shadow 0.12s ease; }
+        .form-actions .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 46px rgba(6,132,94,0.16); }
+        .form-actions .btn-primary:active { transform: translateY(-1px); }
+        .form-actions .btn-primary:focus-visible { outline: 3px solid rgba(6,132,94,0.12); outline-offset: 2px; }
+        .form-actions .btn-secondary { padding: 10px 18px; background: transparent; border: 2px solid rgba(16,148,65,0.12); color: var(--text-dark); border-radius: 8px; font-weight: 700; cursor: pointer; }
+        .form-actions .btn-secondary:hover { background: rgba(16,148,65,0.04); transform: translateY(-2px); }
+        .form-actions .btn-secondary:focus-visible { outline: 3px solid rgba(16,148,65,0.08); outline-offset: 2px; }
+        /* Disabled/Loading state for buttons */
+        .form-actions .btn-primary[disabled], .form-actions .btn-secondary[disabled], .form-actions .btn-primary.is-loading { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+        /* Make modal-cancel look consistent and focusable */
+        .modal-cancel { display: inline-flex; align-items: center; justify-content: center; }
+        .modal-cancel:hover { filter: brightness(0.98); }
+        /* Responsive: stack on smaller screens and make controls full-width */
+        @media (max-width: 900px) {
+            .booking-form .form-grid { grid-template-columns: 1fr; gap: 12px; }
+            .form-actions { flex-direction: column-reverse; align-items: stretch; }
+            .form-actions .btn-primary, .form-actions .btn-secondary { width: 100%; }
+            .form-actions .form-status { margin-left: 0; margin-top: 6px; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .booking-form .form-row .form-label { font-size: 13px; }
+            .booking-form .form-row input, .booking-form .form-row select, .booking-form .form-row textarea { font-size: 15px; padding: 12px; }
+            .modal-inner { padding: 18px; }
+        }
         .modal-close { background: none; border: none; font-size: 28px; position: absolute; right: 20px; top: 18px; color: var(--text-dark); cursor: pointer; padding: 6px; border-radius: 6px; }
         #modalTitle { margin: 0 0 8px; font-size: clamp(1.15rem, 2.4vw, 1.5rem); font-weight: 800; color: var(--secondary-color); text-align: center; font-family: 'Cairo', 'Almarai', sans-serif; }
         .modal-inner .divider { width: 110px; height: 6px; margin: 8px auto 14px; border-radius: 6px; background: linear-gradient(90deg, rgba(6,132,94,1), rgba(14,169,99,1)); box-shadow: 0 8px 24px rgba(6,132,94,0.12); }

@@ -54,7 +54,7 @@
             <p>الاتحاد لخدمات المعتمرين - خبرة أكثر من 10 سنوات</p>
             <div class="hero-buttons">
                 <a href="tel:0574744014" class="btn-primary">اتصل بنا</a>
-                <a href="tel:0575010484" class="btn-primary btn-secondary">احجز الآن</a>
+                <button id="bookNowBtn" class="btn-secondary" type="button">احجز الآن</button>
             </div>
         </div>
     </section>
@@ -196,6 +196,114 @@
             </div>
         </div>
     </section>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal" role="dialog" aria-hidden="true">
+      <div class="modal-inner booking-modal">
+        <button class="modal-close" aria-label="أغلق">&times;</button>
+        <h2 id="bookingTitle">الاتحاد لخدمات المعتمرين — طلب حجز</h2>
+        <div class="divider" aria-hidden="true"></div>
+
+        <form id="bookingForm" class="booking-form" action="/wp-admin/admin-post.php?action=book_trip" method="post" novalidate>
+          <input type="hidden" name="action" value="book_trip">
+          <!-- Hidden field for WP action (already included in action URL) -->
+
+          <div class="form-grid">
+            <label class="form-row">
+              <span class="form-label">الاسم</span>
+              <input name="name" type="text" required placeholder="الاسم الكامل" />
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">رقم التليفون</span>
+              <input name="phone" type="tel" required placeholder="05xxxxxxxx" pattern="[0-9+\-\s]{6,}" />
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">البرنامج</span>
+              <select name="program" required>
+                <option value="">اختر البرنامج</option>
+                <option>برنامج اتحاد المناسك المسيرة</option>
+                <option>برنامج اتحاد الطواف الميسر</option>
+                <option>برنامج مقام المعتمر</option>
+                <option>برنامج طواف للسياحة الدينية</option>
+              </select>
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">الرحلة</span>
+              <select name="trip" required>
+                <option value="">اختر الرحلة</option>
+                <option>3 ايام مكة والمدينة (يوما)</option>
+                <option>3 ايام مكة فقط (الأربعاء أو الخميس)</option>
+                <option>4 ايام مكة والمدينة (يوما)</option>
+                <option>4 ايام المدينة ومكة (الأحد أو الأربعاء أو الخميس)</option>
+                <option>رحلات طويلة يومياً</option>
+              </select>
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">تاريخ الرحلة</span>
+              <input name="date" type="date" required />
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">نوع الحجز</span>
+              <select name="booking_type" required>
+                <option value="">اختر نوع الحجز</option>
+                <option>عوائل</option>
+                <option>عزاب</option>
+              </select>
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">الجنس</span>
+              <select name="gender" required>
+                <option value="">اختر</option>
+                <option>ذكر</option>
+                <option>أنثى</option>
+              </select>
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">الفندق</span>
+              <select name="hotel" required>
+                <option value="">اختر نوع الإقامة</option>
+                <option>سرير</option>
+                <option>غرفة</option>
+                <option>بدون فندق</option>
+              </select>
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">عدد الأسرّة</span>
+              <input name="beds" type="number" min="0" value="0" />
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">عدد المقاعد (ذكور)</span>
+              <input name="seats_male" type="number" min="0" value="0" />
+            </label>
+
+            <label class="form-row">
+              <span class="form-label">عدد المقاعد (إناث)</span>
+              <input name="seats_female" type="number" min="0" value="0" />
+            </label>
+
+            <label class="form-row form-full">
+              <span class="form-label">الملاحظات</span>
+              <textarea name="notes" rows="3" placeholder="ملاحظات إضافية (اختياري)"></textarea>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">حجز</button>
+            <button type="button" class="btn-secondary modal-cancel">إلغاء</button>
+            <div class="form-status" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
