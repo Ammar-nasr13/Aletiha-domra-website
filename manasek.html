@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مناسك العمرة — الاتحاد لخدمات المعتمرين</title>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav-small">
+    <div class="container">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="شعار الاتحاد" class="logo-img"> <span>الاتحاد لخدمات المعتمرين</span></a>
+    </div>
+  </header>
+
+  <main class="manasek-section section">
+    <div class="container">
+      <h1 class="section-title" tabindex="0">مناسك العمرة</h1>
+      <p class="section-description">اتبع خطوات المناسك التالية بالترتيب. اضغط على كل رمز لعرض مزيد من التفاصيل والإرشادات.</p>
+
+      <div class="manasek-cta" role="region" aria-label="تحميل تطبيق المطوف">
+        <p class="cta-note">لمعرفة مناسك العمرة بشكل مفصّل وبالصور والفيديوهات، احمل تطبيق <strong>المطوف</strong> الآن:</p>
+        <a class="btn-primary manasek-cta-btn" href="https://play.google.com/store/apps/details?id=com.madar" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+          حمل الآن
+        </a>
+      </div>
+
+      <div class="manasek-grid" aria-hidden="false">
+        <button class="manasek-item" data-key="ihram" aria-expanded="false">
+          <div class="manasek-badge">1</div>
+          <div class="manasek-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+          <h3>الإحرام من الميقات</h3>
+        </button>
+
+        <button class="manasek-item" data-key="tawaf" aria-expanded="false">
+          <div class="manasek-badge">2</div>
+          <div class="manasek-icon"><i class="fa-solid fa-mosque" aria-hidden="true"></i></div>
+          <h3>الطواف</h3>
+        </button>
+
+        <button class="manasek-item" data-key="maqam" aria-expanded="false">
+          <div class="manasek-badge">3</div>
+          <div class="manasek-icon"><i class="fa-solid fa-archway" aria-hidden="true"></i></div>
+          <h3>مقام إبراهيم</h3>
+        </button>
+
+        <button class="manasek-item" data-key="saee" aria-expanded="false">
+          <div class="manasek-badge">4</div>
+          <div class="manasek-icon"><i class="fa-solid fa-person-running" aria-hidden="true"></i></div>
+          <h3>السعي</h3>
+        </button>
+
+        <button class="manasek-item" data-key="zamzam" aria-expanded="false">
+          <div class="manasek-badge">5</div>
+          <div class="manasek-icon"><i class="fa-solid fa-tint" aria-hidden="true"></i></div>
+          <h3>زمزم</h3>
+        </button>
+
+        <button class="manasek-item" data-key="halq" aria-expanded="false">
+          <div class="manasek-badge">6</div>
+          <div class="manasek-icon"><i class="fa-solid fa-scissors" aria-hidden="true"></i></div>
+          <h3>الحلق أو التقصير</h3>
+        </button>
+
+        <button class="manasek-item" data-key="etiquette" aria-expanded="false">
+          <div class="manasek-badge">7</div>
+          <div class="manasek-icon"><i class="fa-solid fa-book" aria-hidden="true"></i></div>
+          <h3>آداب وتوجيهات</h3>
+        </button>
+      </div>
+
+      <!-- Modal -->
+      <div id="manasekModal" class="modal" role="dialog" aria-hidden="true">
+        <div class="modal-inner">
+          <button class="modal-close" aria-label="أغلق">&times;</button>
+          <h2 id="modalTitle"></h2>
+          <div id="modalContent" class="modal-content"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="manasek.js" defer></script>
+</body>
+</html>

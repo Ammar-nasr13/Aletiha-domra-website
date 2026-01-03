@@ -1389,4 +1389,197 @@
         .contact-buttons a i {
             margin-inline-end: 8px;
         }
+
+        /* Manasek page styles */
+        .manasek-section .section-title { margin-bottom: 18px; position: relative; display: block; padding-bottom: 16px; text-align: center; transition: color 0.22s ease, transform 0.22s ease; cursor: default; }
+        /* Decorative underline for the Manasek title (centered) */
+        .manasek-section .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 6px;
+            width: 160px;
+            height: 4px; /* reduced thickness */
+            border-radius: 8px;
+            background: linear-gradient(90deg, rgba(6,132,94,1), rgba(14,169,99,1));
+            box-shadow: 0 6px 18px rgba(6,132,94,0.10);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.18s;
+            transform-origin: center;
+        }
+        .manasek-section .section-title:hover, .manasek-section .section-title:focus { color: var(--primary-color); transform: translateY(-2px); }
+        .manasek-section .section-title:focus-visible { outline: none; box-shadow: 0 10px 28px rgba(6,132,94,0.08); border-radius: 8px; }
+        .manasek-section .section-title:hover::after, .manasek-section .section-title:focus::after { transform: translateX(-50%) scaleX(1.08); box-shadow: 0 10px 28px rgba(6,132,94,0.12); opacity: 0.98; }
+        @media (max-width: 480px) {
+            .manasek-section .section-title::after { width: 120px; height: 3px; bottom: 4px; }
+        }
+        .manasek-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 22px;
+            margin-top: 28px;
+            align-items: start;
+            justify-items: center;
+        }
+
+        .manasek-item {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 18px;
+            width: 100%;
+            max-width: 220px;
+            text-align: center;
+            border: 1px solid rgba(6,132,94,0.06);
+            box-shadow: 0 8px 24px rgba(6,132,94,0.04);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .manasek-item:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(6,132,94,0.08); }
+
+        /* Subtle hover / focus effects for heading and icon */
+        .manasek-item h3 { display: inline-block; transition: color 0.18s ease, transform 0.18s ease, letter-spacing 0.18s ease; }
+        .manasek-item:hover h3, .manasek-item:focus h3 { color: var(--primary-color); transform: translateY(-2px); letter-spacing: 0.6px; }
+
+        .manasek-icon { transition: transform 0.18s ease, box-shadow 0.18s ease; will-change: transform; }
+        .manasek-item:hover .manasek-icon, .manasek-item:focus .manasek-icon { transform: translateY(-4px) scale(1.02); box-shadow: 0 16px 40px rgba(6,132,94,0.06); }
+
+        /* Keyboard accessibility: visible focus */
+        .manasek-item:focus { outline: none; box-shadow: 0 18px 40px rgba(6,132,94,0.10); transform: translateY(-6px); }
+
+        .manasek-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+        }
+
+        .manasek-icon {
+            width: 86px;
+            height: 86px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(6,132,94,0.07), rgba(14,169,99,0.04));
+            font-size: 34px;
+            color: var(--primary-color);
+        }
+
+        .manasek-item h3 { margin: 0; font-size: 17px; color: var(--text-dark); font-weight: 700; }
+
+        /* Call-to-action for downloading the app */
+        .manasek-cta { display: flex; gap: 14px; align-items: center; justify-content: center; margin: 18px 0 22px; flex-wrap: wrap; text-align: center; }
+        .manasek-cta .cta-note { font-weight: 800; color: var(--text-dark); font-size: 16px; margin: 0; }
+        .manasek-cta .manasek-cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; }
+        .manasek-cta .manasek-cta-btn .fa-google-play { font-size: 18px; margin-inline-end: 6px; }
+
+        @media (max-width: 480px) {
+          .manasek-cta { flex-direction: column; gap: 10px; }
+          .manasek-cta .cta-note { font-size: 15px; }
+        }
+
+        /* Desktop layout: responsive multi-column grid (no circular diagram) */
+        @media (min-width: 900px) {
+            .manasek-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+                margin: 28px auto 0;
+                width: auto;
+                height: auto;
+                display: grid;
+                position: relative;
+                padding: 0;
+            }
+
+            /* remove decorative circular ring - present cleaner card grid */
+            .manasek-grid::before { display: none; }
+
+            .manasek-grid .manasek-item {
+                position: relative;
+                width: 100%;
+                height: auto;
+                max-width: none;
+                border-radius: 14px;
+                padding: 22px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                text-align: center;
+                transition: transform 0.18s ease, box-shadow 0.18s ease;
+                cursor: pointer;
+                min-height: 180px;
+            }
+
+            /* badge sits in the corner inside the card */
+            .manasek-grid .manasek-item .manasek-badge {
+                position: absolute;
+                top: 12px;
+                left: 12px; /* RTL: left keeps badge on the visible side */
+                right: auto;
+            }
+
+            .manasek-grid .manasek-item .manasek-icon {
+                width: 96px;
+                height: 96px;
+                font-size: 34px;
+                border-radius: 50%;
+            }
+
+            .manasek-grid .manasek-item h3 { font-size: 18px; margin-top: 12px; font-weight: 700; }
+
+            /* make items slightly larger on very wide screens */
+            @media (min-width: 1200px) {
+                .manasek-grid { grid-template-columns: repeat(4, 1fr); gap: 30px; }
+            }
+        }
+
+        /* Mobile-first: ensure small screens show single-column stacking */
+        @media (max-width: 480px) {
+            .manasek-grid { grid-template-columns: 1fr; gap: 14px; }
+            .manasek-item { padding: 16px; min-height: 140px; }
+            .manasek-icon { width: 72px; height: 72px; font-size: 26px; }
+            .manasek-badge { width: 34px; height: 34px; font-size: 14px; }
+            .manasek-item h3 { font-size: 16px; }
+        }
+
+        /* Modal */
+        .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(6,12,8,0.6); z-index: 9999; padding: 20px; }
+        .modal[aria-hidden="false"] { display: flex; }
+        .modal-inner { background: var(--white); border-radius: 14px; padding: 28px 28px 24px; max-width: 780px; width: 100%; box-shadow: 0 40px 100px rgba(6,12,8,0.18); position: relative; }
+        .modal-close { background: none; border: none; font-size: 28px; position: absolute; right: 20px; top: 18px; color: var(--text-dark); cursor: pointer; padding: 6px; border-radius: 6px; }
+        #modalTitle { margin: 0 0 8px; font-size: clamp(1.15rem, 2.4vw, 1.5rem); font-weight: 800; color: var(--secondary-color); text-align: center; font-family: 'Cairo', 'Almarai', sans-serif; }
+        .modal-inner .divider { width: 110px; height: 6px; margin: 8px auto 14px; border-radius: 6px; background: linear-gradient(90deg, rgba(6,132,94,1), rgba(14,169,99,1)); box-shadow: 0 8px 24px rgba(6,132,94,0.12); }
+        .modal-content { margin-top: 6px; color: var(--text-dark); line-height: 1.95; font-weight: 500; direction: rtl; text-align: right; font-size: 16px; }
+        .modal-content .manasek-lead { font-weight: 700; margin-bottom: 12px; font-size: 16.5px; }
+        .manasek-media { display: grid; gap: 20px; align-items: start; }
+        .manasek-figure { display: block; margin: 0 auto 14px; max-width: 420px; text-align: center; }
+        .manasek-img { width: 100%; height: auto; display: block; border-radius: 10px; object-fit: cover; box-shadow: 0 14px 40px rgba(0,0,0,0.08); }
+        .manasek-figure figcaption { margin-top: 8px; font-size: 13px; color: var(--text-light); }
+        .modal-content ol { margin: 8px 0 0 0; padding-inline-start: 1.1rem; list-style-position: outside; counter-reset: item; }
+        .modal-content ol li { margin: 10px 0; line-height: 1.8; position: relative; padding-right: 8px; }
+        .modal-content ol li::marker { font-weight: 700; color: var(--primary-color); font-size: 16px; }
+        .modal-content .manasek-talbiyah { margin-top: 16px; padding: 14px; border-radius: 10px; background: linear-gradient(90deg, rgba(6,132,94,0.04), rgba(14,169,99,0.02)); text-align: center; }
+        .modal-content .manasek-talbiyah p { margin: 6px 0; font-weight: 800; font-size: 15px; }
+        .modal-content .muted { font-weight: 500; color: var(--text-light); font-size: 14px; }
+        @media (min-width: 900px) { .manasek-media { grid-template-columns: 320px 1fr; } .manasek-figure { margin: 0; } .manasek-img { border-radius: 12px; } .modal-content ol { padding-inline-start: 1.6rem; } }
+        @media (max-width: 480px) { .manasek-figure { max-width: 320px; } } 
+        @media (max-width: 480px) { .modal-inner { padding: 18px; } .modal-close { right: 12px; top: 12px; } .modal-content { font-size: 15px; } }
+        .modal-content .manasek-lead { font-weight: 700; margin-bottom: 10px; font-size: 17px; }
+        .modal-content ol { margin: 10px 0 0 1.2rem; padding-left: 1rem; list-style: decimal; color: var(--text-dark); }
+        .modal-content li { margin: 8px 0; line-height: 1.8; }
+        .modal-content .manasek-talbiyah { margin-top: 14px; padding: 12px; border-radius: 8px; background: linear-gradient(90deg, rgba(6,132,94,0.04), rgba(14,169,99,0.02)); }
+        .modal-content .manasek-talbiyah p { margin: 6px 0; font-weight: 700; text-align: center; }
+        .modal-content .muted { font-weight: 500; color: var(--text-light); font-size: 14px; }
+
     
